@@ -94,8 +94,18 @@
 			{
 				qId = idx + '/' + i
 				if (getStateValue(qId)) { asked = "asked " } else { asked = "" }
+				if (d.categories[idx].questions[i].caption == null) {
+					caption = i+1;
+				} else {
+					caption = d.categories[idx].questions[i].caption;
+				}
 				html += '<td';
-				if (typeof d.categories[idx].questions[i] != 'undefined') { html += ' class="' + asked + 'qLink" data-catId="' + idx + '" data-qId="' + i + '">' + (i+1); }  else { html += ' class="asked">'; }
+				if (typeof d.categories[idx].questions[i] != 'undefined') 
+				{ 
+					html += ' class="' + asked + 'qLink" data-catId="' + idx + '" data-qId="' + i + '">' + caption; 
+				}  else { 
+					html += ' class="asked">'; 
+				}
 				html += '</td>';
 			}		
 			html += '</tr>';
