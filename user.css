@@ -1,0 +1,14 @@
+marquee.subtitle {
+    width: 30%;
+    font-family: "Comic Sans MS";
+    animation: blinker 1s steps(1, end) infinite;
+}
+
+@keyframes blinker {
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: visible;
+    }
+}
