@@ -55,8 +55,19 @@
 			
 	}
 
+	function stopVideo() {
+		$("video").each(function() {
+			this.pause();
+			$(this).find("source").src = "";
+			this.load();
+			delete(this);
+			$(this).remove();
+		})
+	}
+
     function init()
       {
+
             if (!getStateValue("i"))
             {
                 showIntro(d.intro);
@@ -70,7 +81,7 @@
 	{
 		setStateValue("i");
 		$(".wrapper").html(
-			"<a id='link'><div class='videoContainer'><video controls><source src='" + introFile + "' type='video/mp4'></video></div></a>"
+			"<a id='link' onclick='stopVideo()'><div class='videoContainer'><video controls><source src='" + introFile + "' type='video/mp4'></video></div></a>"
 		);
 		$("#link").click(function() { showOverview(); });
 	}
@@ -212,7 +223,7 @@
 		}
 		if (filetype.startsWith("video/"))
 		{
-			html = "<a id='link'>";
+			html = "<a id='link' onclick='stopVideo()'>";
 			// timer defaults to false for videos
 			if (timer === true) {
 				html += "<div id='timer'></div>";
